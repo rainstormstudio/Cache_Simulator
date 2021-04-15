@@ -15,6 +15,7 @@ public:
     explicit Settings(QWidget *parent = nullptr, int* addrSize = nullptr, int* cacheSize = nullptr, int* nWay = nullptr);
     ~Settings();
 
+private slots:
     void setAddrSize();
     void setCacheSize();
     void setNWay();

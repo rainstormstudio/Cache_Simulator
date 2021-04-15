@@ -26,10 +26,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->cacheTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->cacheTable->setColumnCount(1 + 2 * _cache->ways());
     ui->cacheTable->setHorizontalHeaderLabels(cacheHeaders);
-    connect(ui->addDecButton, &QPushButton::clicked, this, &MainWindow::addDec);
-    connect(ui->clearMemoryAccess, &QPushButton::clicked, this, &MainWindow::clearMemoryAccess);
-    connect(ui->executeButton, &QPushButton::clicked, this, &MainWindow::executeAll);
-    connect(ui->resetButton, &QPushButton::clicked, this, &MainWindow::resetCache);
+    connect(ui->addDecButton, SIGNAL(clicked()), this, SLOT(addDec()));
+    connect(ui->clearMemoryAccess, SIGNAL(clicked()), this, SLOT(clearMemoryAccess()));
+    connect(ui->executeButton, SIGNAL(clicked()), this, SLOT(executeAll()));
+    connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetCache()));
 }
 
 MainWindow::~MainWindow()

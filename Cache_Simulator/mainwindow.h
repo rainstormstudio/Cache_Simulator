@@ -17,15 +17,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void reset();
+
+private slots:
     void addDec();
     void clearMemoryAccess();
     void executeAll();
     void resetCache();
-    void reset();
-
-private slots:
     void on_actionSettings_triggered();
-
     void on_actionAbout_triggered();
 
 private:

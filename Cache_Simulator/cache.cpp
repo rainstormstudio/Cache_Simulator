@@ -33,7 +33,10 @@ Cache::Sect* Cache::loadAddr(int addr) {
         _nHits ++;
     } else {
         _nMisses ++;
-        Sect sect = {0, tag, data};
+        Sect sect;
+        sect.index = 0;
+        sect.tag = tag;
+        sect.data = data;
         if (_cache[set].size() < _nWays) {
             sect.index = _cache[set].size();
         } else {

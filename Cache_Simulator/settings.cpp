@@ -1,6 +1,7 @@
 #include "settings.h"
 #include "ui_settings.h"
 
+#include <math.h>
 #include <QString>
 
 Settings::Settings(QWidget *parent, int* addrSize, int* cacheSize, int* nWay) :
@@ -16,9 +17,9 @@ Settings::Settings(QWidget *parent, int* addrSize, int* cacheSize, int* nWay) :
     ui->cacheSizeNumber->setCurrentIndex((int)round(log2(*_cacheSize)) - 1);
     ui->nWayNumber->setCurrentIndex((int)round(log2(*_nWay)));
 
-    connect(ui->addrSizeNumber, &QScrollBar::valueChanged, this, &Settings::setAddrSize);
-    connect(ui->cacheSizeNumber, &QComboBox::currentIndexChanged, this, &Settings::setCacheSize);
-    connect(ui->nWayNumber, &QComboBox::currentIndexChanged, this, &Settings::setNWay);
+    connect(ui->addrSizeNumber, SIGNAL(valueChanged(int)), this, SLOT(setAddrSize()));
+    connect(ui->cacheSizeNumber, SIGNAL(currentIndexChanged(int)), this, SLOT(setCacheSize()));
+    connect(ui->nWayNumber, SIGNAL(currentIndexChanged(int)), this, SLOT(setNWay()));
 }
 
 Settings::~Settings()
